@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hash</title>
+</head>
+<body>
+
+<h2>Hash Function</h2>
+
+<input id="text" placeholder="Enter text">
+
+<br><br>
+
+<select id="algorithm">
+    <option value="md5">MD5</option>
+    <option value="sha256">SHA-256</option>
+</select>
+
+<br><br>
+
+<button onclick="run()">Hash</button>
+
+<p id="result"></p>
+
+<script>
+async function run() {
+    const text = document.getElementById("text").value;
+    const algorithm = document.getElementById("algorithm").value;
+
+    const res = await fetch("/hash/compute", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            text: text,
+            algorithm: algorithm
+        })
+    });
+
+    const data = await res.json();
+
+    document.getElementById("result").innerText = data.result;
+}
+</script>
+
+</body>
+</html>
