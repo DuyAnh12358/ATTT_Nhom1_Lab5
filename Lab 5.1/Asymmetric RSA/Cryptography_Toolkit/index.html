@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>RSA Cryptography Toolkit</title>
+    <script src="https://cdn.jsdelivr.net/npm/node-forge@1.3.1/dist/forge.min.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        textarea { width: 100%; height: 80px; margin-bottom: 10px; }
+        .section { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 8px; }
+        button { padding: 10px 15px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px; }
+        button:hover { background: #0056b3; }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Phần 2: Asymmetric Encryption (RSA)</h1>
+
+    <div class="section">
+        <h2>1. Key Generation</h2>
+        <button onclick="generateKeys()">Generate Random Key Pair</button>
+        <p>Public Key:</p>
+        <textarea id="publicKeyDisplay" readonly></textarea>
+        <p>Private Key:</p>
+        <textarea id="privateKeyDisplay" readonly></textarea>
+        <button onclick="copyToClipboard('publicKeyDisplay')">Copy Public Key</button>
+        <button onclick="copyToClipboard('privateKeyDisplay')">Copy Private Key</button>
+    </div>
+
+    <div class="section">
+        <h2>2. Encryption</h2>
+        <p>Nhập Plaintext:</p>
+        <textarea id="plainTextInput" placeholder="Nhập văn bản cần mã hóa..."></textarea>
+        <p>Nhập Public Key để mã hóa:</p>
+        <textarea id="publicKeyInput"></textarea>
+        <button onclick="encryptData()">Execute Encryption</button>
+        <p>Ciphertext (Kết quả):</p>
+        <textarea id="cipherTextResult"></textarea>
+        <button onclick="copyToClipboard('cipherTextResult')">Copy Ciphertext</button>
+    </div>
+
+    <div class="section">
+        <h2>3. Decryption</h2>
+        <p>Nhập Ciphertext:</p>
+        <textarea id="cipherTextInput" placeholder="Dán bản mã vào đây..."></textarea>
+        <p>Nhập Private Key để giải mã:</p>
+        <textarea id="privateKeyInput"></textarea>
+        <button onclick="decryptData()">Execute Decryption</button>
+        <p>Plaintext (Kết quả sau giải mã):</p>
+        <textarea id="plainTextResult"></textarea>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;">
+    <button onclick="tryAgain()" style="background-color: #dc3545;">Try Again</button>
+    </div>
+
+    <script src="rsa_logic.js"></script>
+</body>
+</html>
